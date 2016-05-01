@@ -4,8 +4,14 @@
 	$username = "user";
 	$password = "user01";
 	$database = "test1";
-	mysql_connect(localhost, $username, $password);
-	@mysql_select_db($database) or die ("Unable to select database");
+	if( !mysql_connect(localhost, $username, $password)){
+		print "Blad polaczenia z baza danych";
+		exit(0);
+	}
+	if( !mysql_select_db($database)){
+		print "Blad otwarcia bazy danych";
+		exit(0);
+	}
 	
 	$query = "SELECT * FROM 'temp'";
 	$result = mysql_query($query);
