@@ -13,7 +13,7 @@
 		exit(0);
 	}
 	
-	$query = "SELECT * FROM `temp`";
+	$query = "SELECT * FROM `temp1`";
 	$result = mysql_query($query);
 	
 	//$num = mysql_numrows($result);
