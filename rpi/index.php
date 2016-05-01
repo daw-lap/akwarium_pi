@@ -7,9 +7,9 @@
 	mysql_connect(localhost, $username, $password);
 	@mysql_select_db($database) or die ("Unable to select database");
 	
-	$query = "SELECT * FROM temp";
+	$query = "SELECT * FROM 'temp'";
 	$result = mysql_query($query);
-	$num = mysql_numrows($result);
+	//$num = mysql_numrows($result);
 	mysql_close();
 ?>
 
@@ -19,14 +19,16 @@
 			<td>czas</td>
 			<td>temperatura</td>
 		</tr>
-		<tr>
-			<?php
-				$i=0;
-				while($i < $num){
-					$f1=mysql_result($result,$i);
-				}
-			?>
-		</tr>
+		
+		<?php
+		while($row = mysql_fetch_row($result)){
+			print "<tr>";
+				print "<td>" . $row[0] . "</td>";
+				print "<td>" . $row[1] . "</td>";
+				
+			print "</tr>";
+		}
+		?>
 	</table>
 </body>
 </html>
