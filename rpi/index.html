@@ -1,0 +1,31 @@
+<html>
+<body>
+<?php
+	$username = "user";
+	$password = "user01";
+	$database = "test1";
+	mysql_connect(localhost, $username, $password);
+	@mysql_select_db($database) or die ("Unable to select database");
+	
+	$query = "SELECT * FROM temp";
+	$result = mysql_query($query);
+	$num = mysql_numrows($result);
+	mysql_close();
+?>
+
+	<table>
+		<tr>
+			<td>czas</td>
+			<td>temperatura</td>
+		</tr>
+		<tr>
+			<?php
+				$i=0;
+				while($i < $num){
+					$f1=mysql_result($result,$i);
+				}
+			?>
+		</tr>
+	</table>
+</body>
+</html>
