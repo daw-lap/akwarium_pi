@@ -16,7 +16,6 @@
 	$query = "SELECT * FROM 'temp'";
 	$result = mysql_query($query);
 	//$num = mysql_numrows($result);
-	mysql_close();
 ?>
 
 <?php print $username?>
@@ -33,6 +32,10 @@
 				print "<td>" . $row[1] . "</td>";
 				
 			print "</tr>";
+		}
+		if(!mysql_close()){
+			echo "Nie moge zakonczyc polaczenia z baza danych";
+			exit(0);
 		}
 		?>
 	</table>
