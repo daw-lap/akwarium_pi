@@ -13,25 +13,45 @@
 		exit(0);
 	}
 	
-	$query = "SELECT * FROM `temp1`";
-	$result = mysql_query($query);
+	$query_hour_table = "SELECT * FROM `temp2`";
+	$result_hour_table = mysql_query($query_hour_table);
+	
+	$query_day_table = "SELECT * FROM `temp_daily`";
+	$result_day_table = mysql_query($query_day_table);
 	
 	//$num = mysql_numrows($result);
 ?>
 
-<?php print $username?>
+	<b><h1>TABELA DZIENNA</h1></b>
 	<table border="1">
 		<tr>
-			<td>czas</td>
+			<td>data</td>
+			<td>godzina</td>
 			<td>temperatura</td>
 		</tr>
 		
 		<?php
-		while($row = mysql_fetch_row($result)){
+		while($row = mysql_fetch_row($result_hour_table)){
 			print "<tr>";
 				print "<td>" . $row[0] . "</td>";
 				print "<td>" . $row[1] . "</td>";
-				
+				print "<td>" . $row[2] . "</td>";
+			print "</tr>";
+		}
+		?>
+	</table>
+	
+	<b><h1>TABELA MIESIĘCZNA</h1><b>
+	<table border="1">
+		<tr>
+			<td>data</td>
+			<td>temperatura</td>
+		</tr>
+		<?php
+		while($row = mysql_fetch_row($result_day_table)){
+			print "<tr>";
+				print "<td>" . $row[0] . "</td>";
+				print "<td>" . $row[1] . "</td>";
 			print "</tr>";
 		}
 		if(!mysql_close()){
